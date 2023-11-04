@@ -101,6 +101,8 @@ with col1:
     <style>
     .shifted-text {
         margin-left: 150px;  /* Adjust this value to move the text more or less */
+        font-size: 30px;
+        font-color: #CC0066;
     }
     </style>
     """
