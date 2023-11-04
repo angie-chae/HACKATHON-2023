@@ -89,30 +89,35 @@ new_text = replace_numbers(str(predicted_label), number_to_string)
 match = new_text.replace("[", "").replace("]", "")
 
 st.write("Your SKINDER Match:")
-st.write(match)
+col1, col2 = st.columns(2)
 
-if uploaded_file is not None:
-    user_uploaded_image = Image.open(uploaded_file)
-    st.image(user_uploaded_image, width=200, caption='Resized Image')
+# First column for words
+col1.write(match)
 
-if predicted_label == 0:
-    url = "https://www.ncbi.nlm.nih.gov/books/NBK557401/"
-    st.markdown(f'[More Information]({url})')
-elif predicted_label == 1:
-    url = "https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
-    st.markdown(f'[More Information]({url})')
-elif predicted_label == 2:
-    url = "https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20353878"
-    st.markdown(f'[More Information]({url})')
-elif predicted_label == 3:
-    url = "https://www.ncbi.nlm.nih.gov/books/NBK470538/#:~:text=Dermatofibroma%20is%20a%20commonly%20occurring,histiocytomas%2C%20or%20common%20fibrous%20histiocytoma."
-    st.markdown(f'[More Information]({url})')
-elif predicted_label == 4:
-    url = "https://emedicine.medscape.com/article/1058445-overview"
-    st.markdown(f'[More Information]({url})')
-elif predicted_label == 5:
-    url = "https://www.mountsinai.org/health-library/diseases-conditions/pyogenic-granuloma#:~:text=Pyogenic%20granulomas%20are%20skin%20lesions,around%20them%20may%20be%20inflamed."
-    st.markdown(f'[More Information]({url})')
-else:
-    url = "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
-    st.markdown(f'[More Information]({url})')
+# Second column for image and URL
+with col2:
+    if uploaded_file is not None:
+        user_uploaded_image = Image.open(uploaded_file)
+        st.image(user_uploaded_image, width=200, caption='Resized Image')
+
+    if predicted_label == 0:
+        url = "https://www.ncbi.nlm.nih.gov/books/NBK557401/"
+        st.markdown(f'[More Information]({url})')
+    elif predicted_label == 1:
+        url = "https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/"
+        st.markdown(f'[More Information]({url})')
+    elif predicted_label == 2:
+        url = "https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20353878"
+        st.markdown(f'[More Information]({url})')
+    elif predicted_label == 3:
+        url = "https://www.ncbi.nlm.nih.gov/books/NBK470538/#:~:text=Dermatofibroma%20is%20a%20commonly%20occurring,histiocytomas%2C%20or%20common%20fibrous%20histiocytoma."
+        st.markdown(f'[More Information]({url})')
+    elif predicted_label == 4:
+        url = "https://emedicine.medscape.com/article/1058445-overview"
+        st.markdown(f'[More Information]({url})')
+    elif predicted_label == 5:
+        url = "https://www.mountsinai.org/health-library/diseases-conditions/pyogenic-granuloma#:~:text=Pyogenic%20granulomas%20are%20skin%20lesions,around%20them%20may%20be%20inflamed."
+        st.markdown(f'[More Information]({url})')
+    else:
+        url = "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
+        st.markdown(f'[More Information]({url})')
