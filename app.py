@@ -88,19 +88,19 @@ def replace_numbers(text, mapping):
 new_text = replace_numbers(str(predicted_label), number_to_string)
 match = new_text.replace("[", "").replace("]", "")
 
-displaymatch = '<p style="font-family:serif; color:#CD6155; font-size: 30px; text-align: center;">Find Your Match Today!</p>'
+displaymatch = '<p style="font-family:serif; color:#CD6155; font-size: 30px; text-align: center;">Your Match is...</p>'
 st.markdown(displaymatch, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 # First column for words
 with col1:
-    st.markdown(f'<p style="font-size:24px;">{match}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="font-size:35px; color: #CC0066"; font-family: serif;>{match}</p>', unsafe_allow_html=True)
 
 # Second column for image and URL
 with col2:
     if uploaded_file is not None:
         user_uploaded_image = Image.open(uploaded_file)
-        st.image(user_uploaded_image, width=200, caption='Resized Image')
+        st.image(user_uploaded_image, width=200)
 
     if predicted_label == 0:
         url = "https://www.ncbi.nlm.nih.gov/books/NBK557401/"
