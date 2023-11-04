@@ -5,6 +5,7 @@ from tensorflow import keras
 import re
 
 
+
 # Define the custom CSS to inject into the Streamlit app
 
 # Set up the title of the 
@@ -86,5 +87,11 @@ def replace_numbers(text, mapping):
 
 new_text = replace_numbers(str(predicted_label), number_to_string)
 
+
 st.write(new_text)
+
+if uploaded_file is not None:
+    st.write("Displaying an uploaded image:")
+    user_uploaded_image = Image.open(uploaded_file)
+    st.image(user_uploaded_image, caption='Uploaded Image', use_column_width=True)
 
