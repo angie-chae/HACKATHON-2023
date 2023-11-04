@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import tensorflow
 from tensorflow import keras
+import re
 
 
 # Define the custom CSS to inject into the Streamlit app
@@ -36,7 +37,7 @@ from PIL import Image
 import numpy as np
 
 # Replace 'path_to_image.jpg' with your image file path
-image_path = 'photo/uploadedphoto.jpg'
+image_path = 'uploadedphoto.jpg'
 image = Image.open(image_path)
 
 # Resize the image to 28x28 pixels
@@ -69,5 +70,21 @@ sample_pred = model.predict(sample)
 
 predicted_label = np.argmax(sample_pred , axis=1)
 
-st.write(predicted_label)
+number_to_string = {
+    '4':'melanocytic nevi',
+    '6':'melanoma',
+    '2':'benign keratosis-like lesions', 
+    '1':' basal cell carcinoma',
+    '5':' pyogenic granulomas and hemorrhage',
+    '0':'Actinic keratoses and intraepithelial carcinomae',
+    '3':'dermatofibroma'
+}
+
+def replace_numbers(text, mapping):
+    # Use regex to find all numbers
+    return re.sub(r'\d+', lambda x: mapping.get(x.group(), x.group()), text)
+
+new_text = replace_numbers(predicted_label, number_to_string)
+
+st.write(new_text)
 
