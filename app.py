@@ -84,7 +84,7 @@ def replace_numbers(text, mapping):
     # Use regex to find all numbers
     return re.sub(r'\d+', lambda x: mapping.get(x.group(), x.group()), text)
 
-new_text = replace_numbers(predicted_label, number_to_string)
+new_text = replace_numbers(str(predicted_label), number_to_string)
 
 st.write(new_text)
 
