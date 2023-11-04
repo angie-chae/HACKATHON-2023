@@ -90,14 +90,27 @@ match = new_text.replace("[", "").replace("]", "")
 
 displaymatch = '<p style="font-family:serif; color:#CD6155; font-size: 30px; text-align: center;">Your Match is...</p>'
 st.markdown(displaymatch, unsafe_allow_html=True)
+
+custom_css = """
+<style>
+.border-box {
+    border: 2px solid #CC0066;
+    padding: 10px;
+    border-radius: 5px; /* Optional: for rounded corners */
+}
+</style>
+"""
+
+st.markdown(custom_css, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 # First column for words
 with col1:
-    st.markdown(f'<p style="font-size:35px; color: #CC0066"; font-family: serif;>{match}</p>', unsafe_allow_html=True)
+    st.markdown(f'<div class="border-box"><p style="font-size:35px; color: #CC0066; font-family: serif;">{match}</p></div>', unsafe_allow_html=True)
 
 # Second column for image and URL
 with col2:
+    st.markdown('<div class="border-box">', unsafe_allow_html=True)
     if uploaded_file is not None:
         user_uploaded_image = Image.open(uploaded_file)
         st.image(user_uploaded_image, width=200)
@@ -123,3 +136,5 @@ with col2:
     else:
         url = "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
         st.markdown(f'[More Information]({url})')
+
+    st.markdown('</div>', unsafe_allow_html=True)
