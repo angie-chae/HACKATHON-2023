@@ -32,7 +32,11 @@ if uploaded_file is not None:
     # Write the uploaded image to the specified file
     file_path = os.path.join(save_path, file_name)
     with open(file_path, "wb") as f:
+        progress_bar.progress(25)
+        f.write(uploaded_file.getbuffer())
         progress_bar.progress(50)
+        f.write(uploaded_file.getbuffer())
+        progress_bar.progress(75)
         f.write(uploaded_file.getbuffer())
         progress_bar.progress(100)
     
