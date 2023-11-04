@@ -85,10 +85,11 @@ def replace_numbers(text, mapping):
     # Use regex to find all numbers
     return re.sub(r'\d+', lambda x: mapping.get(x.group(), x.group()), text)
 
-new_text = replace_numbers(str(predicted_label), number_to_string[0])
+new_text = replace_numbers(str(predicted_label), number_to_string)
+match = str(new_text)
 
 st.write("Your SKINDER Match:")
-st.write(new_text)
+st.write(match)
 
 if uploaded_file is not None:
     user_uploaded_image = Image.open(uploaded_file)
