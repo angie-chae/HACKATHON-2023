@@ -94,7 +94,7 @@ st.markdown(displaymatch, unsafe_allow_html=True)
 custom_css = """
 <style>
 .border-box {
-    border: 2px solid #CC0066;
+    border: 2px solid #696969;
     padding: 10px;
     border-radius: 5px; /* Optional: for rounded corners */
 }
@@ -114,6 +114,8 @@ with col2:
     if uploaded_file is not None:
         user_uploaded_image = Image.open(uploaded_file)
         st.image(user_uploaded_image, width=200)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
     if predicted_label == 0:
         url = "https://www.ncbi.nlm.nih.gov/books/NBK557401/"
@@ -137,4 +139,4 @@ with col2:
         url = "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
         st.markdown(f'[More Information]({url})')
 
-st.markdown('</div>', unsafe_allow_html=True)
+    
