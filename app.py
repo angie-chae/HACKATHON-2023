@@ -3,7 +3,7 @@ import os
 import tensorflow
 from tensorflow import keras
 import re
-
+import time
 
 
 # Define the custom CSS to inject into the Streamlit app
@@ -18,7 +18,9 @@ st.markdown(subheader, unsafe_allow_html=True)
 # File uploader widget
 uploaded_file = st.file_uploader("Upload an image...", type=['jpg', 'jpeg', 'png'])
 
+
 if uploaded_file is not None:
+    progress_bar = st.progress(0)
     # Save the uploaded image to a folder in the specified path with a specific name
     save_path = 'photo'
     file_name = 'uploadedphoto.jpg'
@@ -30,9 +32,12 @@ if uploaded_file is not None:
     # Write the uploaded image to the specified file
     file_path = os.path.join(save_path, file_name)
     with open(file_path, "wb") as f:
+        progress_bar.progress(50)
         f.write(uploaded_file.getbuffer())
+        progress_bar.progress(100)
     
-    st.success(f"Image saved as {file_name} in the folder {save_path}")
+    time.sleep(3)
+    st.success("Image Successfully Uploaded")
 
 from PIL import Image
 import numpy as np
