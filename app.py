@@ -37,7 +37,7 @@ from PIL import Image
 import numpy as np
 
 # Replace 'path_to_image.jpg' with your image file path
-image_path = 'uploadedphoto.jpg'
+image_path = 'photo/uploadedphoto.jpg'
 image = Image.open(image_path)
 
 # Resize the image to 28x28 pixels
