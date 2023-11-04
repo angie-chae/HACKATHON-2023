@@ -91,28 +91,16 @@ match = new_text.replace("[", "").replace("]", "")
 displaymatch = '<p style="font-family:serif; color:#CD6155; font-size: 30px; text-align: center;">Your Match is...</p>'
 st.markdown(displaymatch, unsafe_allow_html=True)
 
-custom_css = """
-<style>
-.border-box {
-    border: 2px solid #696969;
-    padding: 10px;
-    border-radius: 5px; /* Optional: for rounded corners */
-}
-</style>
-"""
-
-st.markdown(custom_css, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 # First column for words
 with col1:
-    text = "Your Match is..."
 
     # Custom CSS to move text to the right
     custom_css = """
     <style>
     .shifted-text {
-        margin-left: 20px;  /* Adjust this value to move the text more or less */
+        margin-left: 150px;  /* Adjust this value to move the text more or less */
     }
     </style>
     """
@@ -121,7 +109,7 @@ with col1:
     st.markdown(custom_css, unsafe_allow_html=True)
 
     # Use the custom CSS class in another st.markdown call
-    st.markdown(f'<div class="shifted-text">{text}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="shifted-text">{match}</div>', unsafe_allow_html=True)
 
 # Second column for image and URL
 with col2:
