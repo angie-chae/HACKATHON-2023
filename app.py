@@ -137,4 +137,4 @@ with col2:
         url = "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
         st.markdown(f'[More Information]({url})')
 
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
