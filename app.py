@@ -93,7 +93,7 @@ st.write(new_text)
 if uploaded_file is not None:
     st.write("Displaying uploaded image:")
     user_uploaded_image = Image.open(uploaded_file)
-    st.image(user_uploaded_image, caption='Uploaded Image', use_column_width=True)
+    st.image(user_uploaded_image, width=200, caption='Resized Image')
 
 if predicted_label == 0:
     url = "https://www.ncbi.nlm.nih.gov/books/NBK557401/"
