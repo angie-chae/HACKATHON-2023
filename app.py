@@ -88,11 +88,13 @@ def replace_numbers(text, mapping):
 new_text = replace_numbers(str(predicted_label), number_to_string)
 match = new_text.replace("[", "").replace("]", "")
 
-st.write("Your SKINDER Match:")
+displaymatch = '<p style="font-family:serif; color:#CD6155; font-size: 30px; text-align: center;">Find Your Match Today!</p>'
+st.markdown(displaymatch, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 # First column for words
-col1.write(match)
+with col1:
+    st.markdown(f'<p style="font-size:24px;">{match}</p>', unsafe_allow_html=True)
 
 # Second column for image and URL
 with col2:
