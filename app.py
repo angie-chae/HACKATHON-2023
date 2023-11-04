@@ -86,7 +86,7 @@ def replace_numbers(text, mapping):
     return re.sub(r'\d+', lambda x: mapping.get(x.group(), x.group()), text)
 
 new_text = replace_numbers(str(predicted_label), number_to_string)
-match = str(new_text)
+match = new_text.replace("[", "").replace("]", "")
 
 st.write("Your SKINDER Match:")
 st.write(match)
